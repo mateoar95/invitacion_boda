@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (envelopeOpened) return;
     envelopeOpened = true;
 
-    // Open the flap and slide letter
+    // Trigger zoom + fade animation on the envelope photo
     envelope.classList.add('open');
 
     // After animation, reveal main content
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initParallax();
         startCountdown();
       });
-    }, 1600);
+    }, 1300);
   }
 
   // Prevent scroll before envelope is opened

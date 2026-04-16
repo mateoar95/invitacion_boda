@@ -11,27 +11,21 @@
 </head>
 <body>
 
-  <!-- ============ ENVELOPE SCREEN ============ -->
+  <!-- ============ ENVELOPE SCREEN (hyperrealistic photo-based) ============ -->
   <div id="envelope-screen">
-    <div class="envelope-container">
-      <div class="envelope" id="envelope">
-        <div class="env-back"></div>
-        <div class="env-flap-left"></div>
-        <div class="env-flap-right"></div>
-        <div class="env-flap-bottom"></div>
-        <div class="envelope-letter" id="envelope-letter">
-          <p class="letter-names">Camila & Mateo</p>
-          <p class="letter-subtitle">Te invitan a su boda</p>
-          <p class="letter-date">28 . 11 . 2026</p>
-        </div>
-        <div class="env-flap-front" id="envelope-flap"></div>
-        <div class="wax-seal" id="wax-seal">
-          <div class="seal-flowers"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <span class="seal-text">C & M</span>
-        </div>
+    <div class="envelope-photo-wrap" id="envelope">
+      <img class="envelope-photo" src="photos/envelope-closed.jpg" alt="Sobre verde con sello dorado">
+      <!-- Monogram overlay on the wax seal -->
+      <div class="envelope-monogram">
+        <span class="monogram-names">Camila <em>&amp;</em> Mateo</span>
+        <span class="monogram-date">28 . 11 . 2026</span>
       </div>
-      <p class="envelope-hint">Toca el sello para abrir</p>
+      <!-- Invisible click hotspot over the seal -->
+      <button class="envelope-hotspot" id="wax-seal" aria-label="Abrir invitación"></button>
+      <!-- Soft glow pulse to indicate the click zone -->
+      <div class="envelope-pulse"></div>
     </div>
+    <p class="envelope-hint">Toca el sello para abrir</p>
   </div>
 
   <!-- ============ MAIN CONTENT ============ -->
