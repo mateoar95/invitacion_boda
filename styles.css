@@ -1,5 +1,5 @@
 /* ============================================
-   WEDDING INVITATION — Rustic / Boho Theme
+   WEDDING INVITATION V2 — GTA VI Fullbleed Layout
    Camila & Mateo — 28.11.2026
    ============================================ */
 
@@ -11,17 +11,17 @@
 }
 
 :root {
-  --tierra: #8C7E6A;       /* Topo / Marrón terroso */
-  --arena: #CDCECB;        /* Gris perla / Hueso frío */
+  --tierra: #8C7E6A;       /* Topo / Marron terroso */
+  --arena: #CDCECB;        /* Gris perla / Hueso frio */
   --oliva: #828367;        /* Verde oliva suave / Musgo seco */
-  --blanco-roto: #EDEEEB;  /* Derivado del gris perla, más claro */
-  --terracota: #8C7E6A;    /* Topo como acento cálido */
-  --gold: #B1B1A2;         /* Salvia claro / Beige grisáceo */
+  --blanco-roto: #EDEEEB;  /* Derivado del gris perla, mas claro */
+  --terracota: #8C7E6A;    /* Topo como acento calido */
+  --gold: #B1B1A2;         /* Salvia claro / Beige grisaceo */
   --kraft: #B1B1A2;        /* Salvia claro */
   --kraft-bg: #DDDEDA;     /* Derivado suave del gris perla */
   --linen-bg: #E8E9E5;     /* Derivado suave del gris perla */
   --dark-text: #4F4D32;    /* Verde bosque profundo */
-  --body-text: #5E5C45;    /* Derivado del verde bosque, más legible */
+  --body-text: #5E5C45;    /* Derivado del verde bosque, mas legible */
 
   --ff-script: 'Dancing Script', cursive;
   --ff-serif: 'Playfair Display', serif;
@@ -348,7 +348,7 @@ body {
   display: none;
 }
 
-/* ---------- FIXED NAV (PWB inspired) ---------- */
+/* ---------- FIXED NAV ---------- */
 .fixed-nav {
   position: fixed;
   top: 0;
@@ -519,8 +519,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: -20%;
-  background:
-    url('photos/hero-bg.jpg');
+  background: url('photos/hero-bg.jpg');
   background-size: cover;
   background-position: center;
   will-change: transform;
@@ -565,22 +564,22 @@ body {
   transform: translateY(25px);
 }
 
-.hero-content.stagger-in .hero-pre {
+#hero-content.stagger-in .hero-pre {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;
 }
-.hero-content.stagger-in .hero-names {
+#hero-content.stagger-in .hero-names {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
 }
-.hero-content.stagger-in .hero-divider {
+#hero-content.stagger-in .hero-divider {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.55s forwards;
 }
-.hero-content.stagger-in .hero-date {
+#hero-content.stagger-in .hero-date {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
 }
-.hero-content.stagger-in .countdown {
+#hero-content.stagger-in .countdown {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 0.9s forwards;
 }
-.hero-content.stagger-in .scroll-indicator {
+#hero-content.stagger-in .scroll-indicator {
   animation: staggerReveal 0.9s cubic-bezier(0.16,1,0.3,1) 1.2s forwards;
 }
 
@@ -646,10 +645,7 @@ body {
 
 /* Scroll indicator */
 .scroll-indicator {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -716,83 +712,90 @@ body {
   font-weight: 400;
 }
 
-/* ---------- SPLIT SECTIONS (photo + content side by side) ---------- */
-.split-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 600px;
-  overflow: hidden;
-}
 
-.split-section .split-photo {
+/* ===========================================
+   V2 — FULLBLEED SECTION LAYOUT (GTA VI style)
+   =========================================== */
+
+.fullbleed-section {
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.split-section .split-photo img {
+.fullbleed-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.fullbleed-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.2) 0%,
+    rgba(0,0,0,0.4) 100%
+  );
+  z-index: 1;
+}
+
+.fullbleed-overlay.overlay-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.55) 100%
+  );
+}
+
+.fullbleed-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 640px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-
-.split-section .split-photo:hover img {
-  transform: scale(1.03);
-}
-
-.split-section .split-content {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 40px;
 }
 
-/* Reverse: photo right, content left */
-.split-section.split-reverse {
-  direction: rtl;
-}
-.split-section.split-reverse > * {
-  direction: ltr;
+
+/* ===========================================
+   V2 — PHOTO BREAKER (parallax strip)
+   =========================================== */
+
+.photo-breaker {
+  height: 70vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
 }
 
-/* Mobile: stack vertically */
 @media (max-width: 768px) {
-  .split-section {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .split-section .split-photo {
+  .photo-breaker {
+    background-attachment: scroll;
     height: 50vh;
-    min-height: 320px;
-  }
-
-  .split-section .split-content {
-    padding: 48px 24px;
-  }
-
-  .split-section.split-reverse {
-    direction: ltr;
+    min-height: 300px;
   }
 }
 
-/* Keep the section backgrounds on split-content */
-.split-section.section-kraft .split-content {
-  background:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(139,109,76,0.02) 3px,
-      rgba(139,109,76,0.02) 6px
-    ),
-    linear-gradient(180deg, var(--kraft-bg) 0%, #D0D1CC 100%);
-}
 
-.split-section.section-linen .split-content {
+/* ===========================================
+   V2 — CLEAN SECTION (solid bg, for dresscode/gallery)
+   =========================================== */
+
+.clean-section {
   background:
     repeating-linear-gradient(
       45deg,
@@ -804,14 +807,163 @@ body {
     linear-gradient(180deg, var(--linen-bg) 0%, #E0E1DD 100%);
 }
 
-/* Remove the separator line between split sections since they look different */
-.split-section + .section::before,
-.section + .split-section::before,
-.split-section + .split-section::before {
-  display: none;
+.clean-section.section-kraft {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(139,109,76,0.02) 3px,
+      rgba(139,109,76,0.02) 6px
+    ),
+    linear-gradient(180deg, var(--kraft-bg) 0%, #D0D1CC 100%);
 }
 
-/* ---------- SECTIONS (general) ---------- */
+.clean-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  text-align: center;
+}
+
+
+/* ===========================================
+   V2 — FULLBLEED TEXT STYLES
+   =========================================== */
+
+.fb-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  color: white;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.fb-line {
+  width: 60px;
+  height: 2px;
+  background: rgba(255,255,255,0.4);
+  margin: 16px auto 24px;
+  border-radius: 2px;
+}
+
+.fb-line.dark {
+  background: #B1B1A2;
+}
+
+.fb-text {
+  font-family: var(--ff-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 20px;
+}
+
+.fb-note {
+  font-family: var(--ff-sans);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  margin-top: 12px;
+}
+
+/* Glassmorphism card for fullbleed sections */
+.fb-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fb-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.fb-card-date {
+  font-family: var(--ff-serif);
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.fb-card-time {
+  font-family: var(--ff-sans);
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fb-card-highlight {
+  display: inline-block;
+  font-family: var(--ff-sans);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.fb-card-place {
+  font-family: var(--ff-serif);
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.fb-card-address {
+  font-family: var(--ff-sans);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+
+/* ===========================================
+   V2 — BUTTONS FOR FULLBLEED
+   =========================================== */
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: var(--ff-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: white;
+  background: transparent;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+}
+
+.btn-outline-light:hover {
+  background: white;
+  color: var(--dark-text);
+  border-color: white;
+}
+
+
+/* ===========================================
+   SECTIONS (general — clean section titles)
+   =========================================== */
+
 .section {
   padding: 80px 24px;
   text-align: center;
@@ -888,7 +1040,19 @@ body {
   margin-top: 16px;
 }
 
-/* Info Card — glassmorphism */
+/* Section decorative separators */
+.section + .section::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+  margin: 0 auto 0;
+  position: relative;
+  top: -24px;
+}
+
+/* Info Card — glassmorphism (for clean sections) */
 .info-card {
   background: rgba(255,255,255,0.65);
   border: 1px solid rgba(212,165,116,0.2);
@@ -947,15 +1111,18 @@ body {
   line-height: 1.5;
 }
 
-/* Map */
+
+/* ---------- MAP ---------- */
 .map-container {
   margin: 24px 0;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 100%;
 }
 
-/* Buttons */
+
+/* ---------- BUTTONS ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -983,14 +1150,15 @@ body {
   color: white;
 }
 
+
 /* ---------- REGALO SECTION ---------- */
 .regalo-tabs {
   display: flex;
   gap: 0;
-  margin: 20px 0 0;
+  margin: 20px auto 0;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
-  border: 1px solid rgba(140,126,106,0.2);
+  border: 1px solid rgba(255,255,255,0.2);
   border-bottom: none;
   width: 100%;
   max-width: 360px;
@@ -1000,11 +1168,11 @@ body {
   flex: 1;
   padding: 12px 16px;
   border: none;
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
   font-family: var(--ff-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--body-text);
+  color: rgba(255,255,255,0.6);
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -1014,27 +1182,32 @@ body {
 }
 
 .regalo-tab.active {
-  background: rgba(255,255,255,0.75);
-  color: var(--dark-text);
-  box-shadow: inset 0 -2px 0 var(--tierra);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.5);
 }
 
 .regalo-tab:not(.active):hover {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.12);
 }
 
 .regalo-tab-flag {
-  font-size: 1.1rem;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  flex-shrink: 0;
 }
 
 .regalo-card {
   display: none;
   width: 100%;
   max-width: 360px;
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(140,126,106,0.2);
+  margin: 0 auto;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
   border-radius: 0 0 14px 14px;
   padding: 20px;
   text-align: left;
@@ -1050,8 +1223,8 @@ body {
   gap: 8px;
   padding-bottom: 14px;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(140,126,106,0.15);
-  color: var(--dark-text);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  color: white;
   font-family: var(--ff-serif);
   font-size: 0.95rem;
   font-weight: 600;
@@ -1062,7 +1235,7 @@ body {
   justify-content: space-between;
   align-items: baseline;
   padding: 8px 0;
-  border-bottom: 1px dashed rgba(140,126,106,0.12);
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
   gap: 12px;
 }
 
@@ -1075,7 +1248,7 @@ body {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--oliva);
+  color: rgba(255,255,255,0.5);
   font-weight: 500;
   flex-shrink: 0;
 }
@@ -1083,7 +1256,7 @@ body {
 .regalo-value {
   font-family: var(--ff-sans);
   font-size: 0.85rem;
-  color: var(--dark-text);
+  color: rgba(255,255,255,0.95);
   font-weight: 500;
   text-align: right;
 }
@@ -1094,7 +1267,8 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Pinterest icon button */
+
+/* ---------- PINTEREST ICON ---------- */
 .btn-pin-icon {
   display: inline-flex;
   align-items: center;
@@ -1115,6 +1289,17 @@ body {
   transform: scale(1.15);
 }
 
+/* Light variant for dark / fullbleed backgrounds */
+.btn-pin-icon.pin-light {
+  color: rgba(255,255,255,0.8);
+}
+.btn-pin-icon.pin-light:hover {
+  color: white;
+  transform: scale(1.15);
+}
+
+
+/* ---------- WHATSAPP BUTTON ---------- */
 .btn-whatsapp {
   background: #25D366;
   color: white;
@@ -1128,6 +1313,7 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 28px rgba(37,211,102,0.4);
 }
+
 
 /* ---------- DRESS CODE ---------- */
 .dresscode-grid {
@@ -1201,7 +1387,8 @@ body {
   color: var(--body-text);
 }
 
-/* ---------- GALLERY — Bento Grid (PWB inspired) ---------- */
+
+/* ---------- GALLERY — Bento Grid ---------- */
 .gallery-bento {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1281,6 +1468,7 @@ body {
     grid-row: span 1;
   }
 }
+
 
 /* ---------- LIGHTBOX ---------- */
 .lightbox {
@@ -1388,7 +1576,8 @@ body {
   .lightbox-next { right: 8px; }
 }
 
-/* ---------- FOOTER (Dark — PWB inspired) ---------- */
+
+/* ---------- FOOTER (Dark) ---------- */
 .footer-dark {
   padding: 72px 24px 48px;
   text-align: center;
@@ -1442,7 +1631,8 @@ body {
   line-height: 1.7;
 }
 
-/* ---------- FADE-IN ANIMATIONS (enhanced) ---------- */
+
+/* ---------- FADE-IN ANIMATIONS ---------- */
 .fade-in-section {
   opacity: 0;
   transform: translateY(40px);
@@ -1454,21 +1644,12 @@ body {
   transform: translateY(0);
 }
 
-/* Section decorative separators */
-.section + .section::before {
-  content: '';
-  display: block;
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(180deg, transparent, var(--gold), transparent);
-  margin: 0 auto 0;
-  position: relative;
-  top: -24px;
-}
 
-/* ---------- RESPONSIVE FINE-TUNING ---------- */
+/* ===========================================
+   RESPONSIVE — FINE TUNING
+   =========================================== */
 
-/* -- Small phones (≤480px) -- */
+/* -- Small phones (<=480px) -- */
 @media (max-width: 480px) {
   .section {
     padding: 60px 20px;
@@ -1493,8 +1674,21 @@ body {
     font-size: 0.95rem;
   }
 
-  .split-section .split-content {
-    padding: 40px 20px;
+  .btn-outline-light {
+    padding: 12px 24px;
+    font-size: 0.88rem;
+  }
+
+  .fullbleed-content {
+    padding: 48px 20px;
+  }
+
+  .fb-card {
+    padding: 22px 18px;
+  }
+
+  .clean-inner {
+    padding: 60px 20px;
   }
 
   .regalo-tabs,
@@ -1512,7 +1706,7 @@ body {
   }
 }
 
-/* -- Very small phones (≤360px — iPhone SE, older Androids) -- */
+/* -- Very small phones (<=360px — iPhone SE, older Androids) -- */
 @media (max-width: 360px) {
   /* Nav: hide brand text, compact links */
   .nav-brand {
@@ -1572,12 +1766,30 @@ body {
   .section-title {
     font-size: 1.4rem;
   }
-  .split-section .split-content {
-    padding: 36px 16px;
+
+  /* Fullbleed sections */
+  .fullbleed-content {
+    padding: 40px 16px;
   }
-  .split-section .split-photo {
-    height: 42vh;
-    min-height: 260px;
+  .fb-title {
+    font-size: 1.5rem;
+  }
+  .fb-card {
+    padding: 20px 14px;
+  }
+  .fb-card-time {
+    font-size: 1.2rem;
+  }
+
+  /* Clean sections */
+  .clean-inner {
+    padding: 48px 16px;
+  }
+
+  /* Photo breaker */
+  .photo-breaker {
+    height: 40vh;
+    min-height: 240px;
   }
 
   /* Dresscode grid */
@@ -1621,5 +1833,50 @@ body {
   }
   .footer-dark .footer-names {
     font-size: 1.8rem;
+  }
+}
+
+/* -- Minimum 320px screens -- */
+@media (max-width: 320px) {
+  .hero-names {
+    font-size: 2rem;
+  }
+  .hero-pre {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+  }
+  .countdown-number {
+    padding: 6px 6px;
+    min-width: 40px;
+    font-size: 1.1rem;
+  }
+  .fullbleed-content {
+    padding: 36px 12px;
+  }
+  .fb-title {
+    font-size: 1.3rem;
+  }
+  .fb-text {
+    font-size: 0.9rem;
+  }
+  .fb-card {
+    padding: 16px 12px;
+  }
+  .clean-inner {
+    padding: 40px 12px;
+  }
+  .btn-outline-light {
+    padding: 10px 20px;
+    font-size: 0.82rem;
+  }
+  .dresscode-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-bento {
+    grid-auto-rows: 120px;
+    gap: 6px;
+  }
+  .nav-links a {
+    font-size: 0.58rem;
   }
 }
