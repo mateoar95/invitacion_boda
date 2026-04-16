@@ -1,0 +1,10 @@
+# Original high-res photos (too large for git)
+Lloret de Mar/
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+
+# Claude config
+.claude/
