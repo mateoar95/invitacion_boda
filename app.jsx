@@ -9,8 +9,8 @@ const WEDDING = {
   ceremony: {
     day: 'Sábado 28 de noviembre',
     year: '2026',
-    time: '4:00 PM',
-    arrive: 'Te esperamos desde las 3:30 PM',
+    time: '3:30 PM',
+    arrive: '',
     venue: 'Casa Kapikua',
     address: 'Km 20 vía Santa Marta — Ciénaga',
     city: 'Santa Marta, Magdalena',
@@ -77,12 +77,17 @@ const WEDDING = {
   ],
   gifts: {
     cop: {
-      titular: 'U-32 S.A.S.', cuenta: '9020137020', nit: '9020137020',
-      banco: 'Global66', tipo: 'Cuenta Electrónica',
+      titular: 'Mateo Arturo Rojas Guzman',
+      tipoId: 'CC', nroId: '1020804682',
+      banco: 'Global66', tipo: 'Depósito Electrónico',
+      cuenta: '1020804682',
     },
     usd: {
-      titular: 'U-32 S.A.S.', cuenta: '8336897868', routing: '026073150',
-      swift: 'CMFGUS33', banco: 'Community Federal Savings Bank',
+      titular: 'Mateo Arturo Rojas Guzman',
+      cuenta: '8335822818', accountType: 'Checking',
+      routing: '026073150', swift: 'CMFGUS33',
+      banco: 'Community Federal Savings Bank',
+      address: '5 Penn Plaza, 14th Floor, New York, NY 10001, US',
     },
   },
   initialPlaylist: [
@@ -357,7 +362,7 @@ function Hero({ heroStyle }) {
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-topline">
-            <span>SCENE 01 <span className="sep">·</span> EL COMIENZO</span>
+            <span>EL COMIENZO</span>
             <span>SANTA MARTA <span className="sep">·</span> COL</span>
           </div>
           <div className="hero-names">
@@ -429,7 +434,7 @@ function Hero({ heroStyle }) {
       <div className="hero-content">
         <div className="hero-topline">
           <span>EST. 2026 <span className="sep">·</span> SANTA MARTA</span>
-          <span>SCENE 01</span>
+          <span></span>
         </div>
         <div className="hero-names">
           <div className="nos-casamos">Nos Casamos</div>
@@ -649,7 +654,7 @@ function DressCode() {
             <ul>
               <li><span className="k">Vestido</span><span className="v">Fluido, largo</span></li>
               <li><span className="k">Calzado</span><span className="v">Sandalia plana o tacón corrido</span></li>
-              <li><span className="k">Paleta</span><span className="v">Tierras y vivos</span></li>
+              <li><span className="k">Colores</span><span className="v">Sólidos o estampados</span></li>
               <li><span className="k">Accesorios</span><span className="v">Ligeros, naturales</span></li>
             </ul>
             <div className="dresscode-card-pin">
@@ -794,7 +799,6 @@ function Gallery({ galleryStyle }) {
           </h2>
         </div>
         <div className="gallery-count" data-reveal data-reveal-delay="2">
-          ROLLO 01 · {WEDDING.gallery.length.toString().padStart(2,'0')} CUADROS<br/>
           ARRASTRA PARA VER →
         </div>
       </div>
@@ -813,11 +817,6 @@ function Gallery({ galleryStyle }) {
                   <div className="placeholder-label">{g.code}<br/><span style={{opacity:0.6}}>{g.caption}</span></div>
                 </div>
               )}
-              <div className="film-frame-caption">« {g.caption} »</div>
-              <div className="film-frame-meta">
-                <span>FRAME {String(i+1).padStart(3,'0')}</span>
-                <span>{g.code}</span>
-              </div>
             </div>
           ))}
         </div>
@@ -1158,10 +1157,11 @@ function Gifts() {
             <div style={{fontSize:'0.85rem', opacity:0.7, marginBottom:'4px'}}>Consignación en pesos colombianos</div>
             <div className="gift-card-details">
               <div className="gift-detail-row"><span className="k">Titular</span><span className="v">{WEDDING.gifts.cop.titular}</span></div>
-              <div className="gift-detail-row"><span className="k">Cuenta</span><span className="v">{WEDDING.gifts.cop.cuenta}</span></div>
-              <div className="gift-detail-row"><span className="k">NIT</span><span className="v">{WEDDING.gifts.cop.nit}</span></div>
+              <div className="gift-detail-row"><span className="k">Tipo ID</span><span className="v">{WEDDING.gifts.cop.tipoId}</span></div>
+              <div className="gift-detail-row"><span className="k">Nº ID</span><span className="v">{WEDDING.gifts.cop.nroId}</span></div>
               <div className="gift-detail-row"><span className="k">Banco</span><span className="v">{WEDDING.gifts.cop.banco}</span></div>
               <div className="gift-detail-row"><span className="k">Tipo</span><span className="v">{WEDDING.gifts.cop.tipo}</span></div>
+              <div className="gift-detail-row"><span className="k">Nº Cuenta</span><span className="v">{WEDDING.gifts.cop.cuenta}</span></div>
             </div>
           </div>
           <div className={`gift-card${expanded === 'usd' ? ' expanded' : ''}`} onClick={() => toggle('usd')}>
@@ -1182,9 +1182,11 @@ function Gifts() {
             <div className="gift-card-details">
               <div className="gift-detail-row"><span className="k">Titular</span><span className="v">{WEDDING.gifts.usd.titular}</span></div>
               <div className="gift-detail-row"><span className="k">Account</span><span className="v">{WEDDING.gifts.usd.cuenta}</span></div>
+              <div className="gift-detail-row"><span className="k">Type</span><span className="v">{WEDDING.gifts.usd.accountType}</span></div>
               <div className="gift-detail-row"><span className="k">Routing</span><span className="v">{WEDDING.gifts.usd.routing}</span></div>
               <div className="gift-detail-row"><span className="k">Swift</span><span className="v">{WEDDING.gifts.usd.swift}</span></div>
               <div className="gift-detail-row"><span className="k">Banco</span><span className="v">{WEDDING.gifts.usd.banco}</span></div>
+              <div className="gift-detail-row"><span className="k">Address</span><span className="v">{WEDDING.gifts.usd.address}</span></div>
             </div>
           </div>
         </div>
@@ -1541,30 +1543,30 @@ function App() {
           <Hero heroStyle={tweaks.heroStyle} />
           <Breaker
             src="photos/breaker-140.jpg"
-            topLeft="INTERLUDIO · I"
+            topLeft=""
             topRight="SANTA MARTA"
             quote={<>« Es increíble, pero una vez<br/>descubres <span className="accent">la magia</span>, ya no puedes dejarla ir. »</>}
-            bottomLeft="PLATE 01"
+            bottomLeft=""
             bottomRight="SCROLL ↓"
           />
           <Events />
           <Breaker
             src="photos/section-dresscode.jpg"
             objectPosition="center 10%"
-            topLeft="INTERLUDIO · II"
+            topLeft=""
             topRight="EL CARIBE NOS ESPERA"
             quote={<>« Quererte <span className="accent">por siempre</span><br/>es la idea más grande que he tenido en mi vida. »</>}
-            bottomLeft="PLATE 02"
-            bottomRight="— DRESS CODE —"
+            bottomLeft=""
+            bottomRight=""
           />
           <DressCode />
           <Gallery galleryStyle={tweaks.galleryStyle} />
           <Breaker
             src="photos/section-rsvp.jpg"
-            topLeft="INTERLUDIO · III"
+            topLeft=""
             topRight="TU LUGAR TE ESPERA"
             quote={<>« Voy a darle <span className="accent">la vuelta al mundo</span><br/>para abrazarte por la espalda. »</>}
-            bottomLeft="PLATE 03"
+            bottomLeft=""
             bottomRight="— RSVP —"
           />
           <Rsvp />
