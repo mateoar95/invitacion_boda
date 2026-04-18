@@ -5,10 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Camila & Mateo — 28.11.2026</title>
 <meta name="description" content="Nuestra invitación — Camila & Mateo, 28 de noviembre de 2026, Santa Marta.">
+<meta name="theme-color" content="#4F4D32">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Caveat:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Loading indicator shown until React renders */
+  #root:empty::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: #f3efe6;
+    z-index: 9999;
+  }
+  #root:empty::after {
+    content: 'Cargando…';
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Georgia, 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #4F4D32;
+    letter-spacing: 0.05em;
+    z-index: 10000;
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.4 } 50% { opacity: 1 } }
+  .no-js-warn {
+    padding: 40px 24px;
+    text-align: center;
+    font-family: Georgia, serif;
+    color: #4F4D32;
+    max-width: 520px;
+    margin: 60px auto;
+    line-height: 1.6;
+  }
+</style>
 <template id="__bundler_thumbnail">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
     <rect width="100" height="100" fill="#4F4D32"/>
@@ -20,10 +54,37 @@
 <body>
 <div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<noscript>
+  <div class="no-js-warn">
+    <h2 style="font-style:italic; font-weight:400;">Camila &amp; Mateo</h2>
+    <p>Para ver esta invitación necesitas habilitar <strong>JavaScript</strong> en tu navegador.</p>
+    <p>28 de noviembre de 2026 — Santa Marta</p>
+  </div>
+</noscript>
+
+<!-- Production React builds (smaller, faster on older devices) -->
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
+        onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js';"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
+        onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js';"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"
+        onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/npm/@babel/standalone@7.29.0/babel.min.js';"></script>
 <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
-<script type="text/babel" src="app.jsx"></script>
+
+<!-- Show a helpful message if, after 15s, React still hasn't mounted -->
+<script>
+  setTimeout(function() {
+    var root = document.getElementById('root');
+    if (!root || root.children.length === 0) {
+      root.innerHTML = '<div class="no-js-warn">'
+        + '<h2 style="font-style:italic; font-weight:400;">Camila &amp; Mateo</h2>'
+        + '<p>La invitación está tardando en cargar. Por favor verifica tu conexión e intenta <a href="javascript:location.reload()" style="color:#c4574a;">recargar la página</a>.</p>'
+        + '<p style="font-size:0.85rem; opacity:0.7; margin-top:20px;">Si el problema persiste, prueba con otro navegador (Chrome, Safari) o una red diferente.</p>'
+        + '</div>';
+    }
+  }, 15000);
+</script>
+
+<script type="text/babel" data-presets="react" src="app.jsx"></script>
 </body>
 </html>

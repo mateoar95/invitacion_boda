@@ -5,7 +5,7 @@ const { useState, useEffect, useRef, useCallback } = React;
    ============================================ */
 const WEDDING = {
   date: new Date('2026-11-28T16:00:00-05:00'),
-  names: { her: 'Camila', him: 'Mateo', short: 'C & M', hashtag: '#Cami&Mat' },
+  names: { her: 'Camila', him: 'Mateo', short: 'C & M', hashtag: '#CAM&MAT' },
   ceremony: {
     day: 'Sábado 28 de noviembre',
     year: '2026',
@@ -32,7 +32,7 @@ const WEDDING = {
     pinterestUrl: 'https://co.pinterest.com/tenoriocamila1/outfit-preboda/?invite_code=6efaf7edaee2413b8157842303891da9&sender=734227682908225709',
   },
   spotify: {
-    playlistUrl: 'https://open.spotify.com/playlist/4I081EXqNbXUrCdQdMiKuZ',
+    playlistUrl: 'https://open.spotify.com/playlist/4I081EXqNbXUrCdQdMiKuZ?si=ovrocmreQyq1JB2K2Q2NDQ&pt=af3ada4b9d60635ca334a2a35e53a7d4&pi=pT-BUTeiQl-vS',
     embedUrl: 'https://open.spotify.com/embed/playlist/4I081EXqNbXUrCdQdMiKuZ?utm_source=generator&theme=0',
     uri: 'spotify:playlist:4I081EXqNbXUrCdQdMiKuZ',
   },
@@ -1046,7 +1046,7 @@ function Rsvp() {
               />
             </div>
             <div className="rsvp-field">
-              <label>Invitado 2 — Nombre completo <span style={{opacity:0.5, letterSpacing:0, textTransform:'none', fontFamily:'var(--font-display)', fontStyle:'italic'}}>(opcional)</span></label>
+              <label>Invitado 2 — Nombre completo <span style={{opacity:0.7, letterSpacing:0, textTransform:'none', fontFamily:'var(--font-display)', fontStyle:'italic', fontSize:'1.1em'}}>(Si aplica)</span></label>
               <input
                 type="text"
                 value={data.name2}
