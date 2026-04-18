@@ -1,273 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Camila & Mateo — Nos Casamos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Camila & Mateo — 28.11.2026</title>
+<meta name="description" content="Nuestra invitación — Camila & Mateo, 28 de noviembre de 2026, Santa Marta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Caveat:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <rect width="100" height="100" fill="#4F4D32"/>
+    <text x="50" y="54" font-family="Georgia" font-size="28" font-style="italic" fill="#f3efe6" text-anchor="middle">C&amp;M</text>
+    <text x="50" y="72" font-family="monospace" font-size="6" letter-spacing="2" fill="#c4574a" text-anchor="middle">28.11.2026</text>
+  </svg>
+</template>
 </head>
 <body>
+<div id="root"></div>
 
-  <!-- ============ ENVELOPE SCREEN (hyperrealistic photo-based) ============ -->
-  <div id="envelope-screen">
-    <div class="envelope-photo-wrap" id="envelope">
-      <img class="envelope-photo" src="photos/envelope-closed.jpg" alt="Sobre verde con sello dorado">
-      <!-- Monogram overlay on the wax seal -->
-      <div class="envelope-monogram">
-        <span class="monogram-names">Camila <em>&amp;</em> Mateo</span>
-        <span class="monogram-date">28 . 11 . 2026</span>
-      </div>
-      <!-- Invisible click hotspot over the seal -->
-      <button class="envelope-hotspot" id="wax-seal" aria-label="Abrir invitación"></button>
-      <!-- Soft glow pulse to indicate the click zone -->
-      <div class="envelope-pulse"></div>
-    </div>
-    <p class="envelope-hint">Toca el sello para abrir</p>
-  </div>
-
-  <!-- ============ MAIN CONTENT ============ -->
-  <div id="main-content" class="hidden">
-
-    <!-- NAV -->
-    <nav class="fixed-nav" id="fixed-nav">
-      <span class="nav-brand">C & M</span>
-      <div class="nav-links">
-        <a href="#ceremonia">Ceremonia</a>
-        <a href="#dresscode">Dress Code</a>
-        <a href="#galeria">Galería</a>
-        <a href="#rsvp" class="nav-cta">RSVP</a>
-      </div>
-    </nav>
-
-    <!-- MUSIC PLAYER -->
-    <div class="music-player" id="music-player">
-      <button class="music-toggle" id="music-toggle" aria-label="Activar/desactivar música">
-        <svg class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
-        </svg>
-        <div class="music-bars" id="music-bars"><span></span><span></span><span></span></div>
-      </button>
-      <audio id="bg-music" loop><source src="01 Patadas de Ahogado.m4a" type="audio/mp4"></audio>
-    </div>
-
-    <!-- ===== 1. HERO ===== -->
-    <section class="fullbleed-section" id="hero">
-      <div class="fullbleed-bg" id="hero-bg" style="background-image:url('photos/hero-bg.jpg')"></div>
-      <div class="fullbleed-overlay"></div>
-      <div class="fullbleed-content" id="hero-content">
-        <p class="hero-pre">Nos casamos</p>
-        <h1 class="hero-names">Camila <span class="amp">&</span> Mateo</h1>
-        <div class="hero-divider"><svg viewBox="0 0 120 20" class="divider-svg"><path d="M0,10 Q30,0 60,10 Q90,20 120,10" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/></svg></div>
-        <p class="hero-date">28 de noviembre de 2026</p>
-        <div class="countdown" id="countdown">
-          <div class="countdown-item"><span class="countdown-number" id="cd-days">---</span><span class="countdown-label">Días</span></div>
-          <div class="countdown-item"><span class="countdown-number" id="cd-hours">--</span><span class="countdown-label">Horas</span></div>
-          <div class="countdown-item"><span class="countdown-number" id="cd-minutes">--</span><span class="countdown-label">Minutos</span></div>
-          <div class="countdown-item"><span class="countdown-number" id="cd-seconds">--</span><span class="countdown-label">Segundos</span></div>
-        </div>
-        <div class="scroll-indicator">
-          <span class="scroll-text">Desliza</span>
-          <div class="scroll-arrow"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BREAKER 1 -->
-    <div class="photo-breaker" style="background-image:url('photos/breaker-10.jpg')"></div>
-
-    <!-- ===== 2. PREBODA ===== -->
-    <section class="fullbleed-section" id="preboda">
-      <div class="fullbleed-bg" style="background-image:url('photos/section-preboda.jpg')"></div>
-      <div class="fullbleed-overlay overlay-dark"></div>
-      <div class="fullbleed-content fade-in-section">
-        <h2 class="fb-title">Preboda</h2>
-        <div class="fb-line"></div>
-        <p class="fb-text">Los invitamos a celebrar con nosotros la víspera de nuestra boda.</p>
-        <div class="fb-card">
-          <p class="fb-card-date">Viernes 27 de noviembre de 2026</p>
-          <p class="fb-card-time">Por la tarde</p>
-          <p class="fb-card-place">Lugar por confirmar — Santa Marta</p>
-        </div>
-        <p class="fb-note">Próximamente compartiremos más detalles.</p>
-        <a class="btn-pin-icon pin-light" href="https://pin.it/3LU4hJufe" target="_blank" rel="noopener" aria-label="Inspiración Preboda">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-        </a>
-      </div>
-    </section>
-
-    <!-- BREAKER 2 -->
-    <div class="photo-breaker" style="background-image:url('photos/breaker-140.jpg')"></div>
-
-    <!-- ===== 3. CEREMONIA ===== -->
-    <section class="fullbleed-section" id="ceremonia">
-      <div class="fullbleed-bg" style="background-image:url('photos/section-ceremonia.jpg')"></div>
-      <div class="fullbleed-overlay overlay-dark"></div>
-      <div class="fullbleed-content fade-in-section">
-        <h2 class="fb-title">Ceremonia</h2>
-        <div class="fb-line"></div>
-        <div class="fb-card">
-          <p class="fb-card-date">Sábado 28 de noviembre de 2026</p>
-          <p class="fb-card-time">4:00 PM</p>
-          <p class="fb-card-highlight">Te esperamos desde las 3:30 PM</p>
-          <p class="fb-card-place">Casa Kapikua</p>
-          <p class="fb-card-address">Km 20 vía Santa Marta — Ciénaga, Santa Marta, Magdalena</p>
-        </div>
-        <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=Kapikua,Santa+Marta,Colombia&z=15&output=embed" width="100%" height="220" style="border:0;border-radius:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Casa Kapikua"></iframe>
-        </div>
-        <a class="btn btn-outline-light" href="https://www.google.com/maps/dir//11.0910194,-74.218598/@11.0910194,-74.218598,15z" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Cómo llegar
-        </a>
-      </div>
-    </section>
-
-    <!-- BREAKER 3 -->
-    <div class="photo-breaker" style="background-image:url('photos/breaker-60.jpg')"></div>
-
-    <!-- ===== 4. DRESS CODE ===== -->
-    <section class="clean-section" id="dresscode">
-      <div class="clean-inner fade-in-section">
-        <h2 class="section-title">Dress Code</h2>
-        <p class="section-subtitle">Playa Elegante</p>
-        <div class="fb-line dark"></div>
-        <div class="dresscode-grid">
-          <div class="dresscode-card">
-            <div class="dresscode-icon"><svg viewBox="0 0 80 100" width="60" height="75"><rect x="22" y="30" width="36" height="50" rx="4" fill="none" stroke="#8C7E6A" stroke-width="2"/><path d="M30 30 L40 20 L50 30" fill="none" stroke="#8C7E6A" stroke-width="2"/><line x1="40" y1="30" x2="40" y2="55" stroke="#8C7E6A" stroke-width="1.5"/><circle cx="40" cy="14" r="8" fill="none" stroke="#8C7E6A" stroke-width="2"/></svg></div>
-            <h3 class="dresscode-label">Ellos</h3>
-            <p class="dresscode-desc">Lino (camisa y pantalón)<br><span class="dresscode-detail">Colores: blanco, beige y derivados</span></p>
-            <a class="btn-pin-icon" href="https://pin.it/1yxi4ME1b" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
-          </div>
-          <div class="dresscode-card">
-            <div class="dresscode-icon"><svg viewBox="0 0 80 100" width="60" height="75"><path d="M28 35 Q28 25 40 20 Q52 25 52 35 L56 80 H24 Z" fill="none" stroke="#8C7E6A" stroke-width="2"/><circle cx="40" cy="14" r="8" fill="none" stroke="#8C7E6A" stroke-width="2"/><path d="M32 50 Q40 45 48 50" fill="none" stroke="#8C7E6A" stroke-width="1.5"/></svg></div>
-            <h3 class="dresscode-label">Ellas</h3>
-            <p class="dresscode-desc">Vestido fluido<br><span class="dresscode-detail">Sandalias planas o tacón corrido</span></p>
-            <a class="btn-pin-icon" href="https://pin.it/12J4iWlmH" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a>
-          </div>
-        </div>
-        <div class="dresscode-warning">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#8C7E6A" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <p>Chicas, les pedimos evitar el color <strong>blanco</strong> y los <strong>tonos pastel</strong>, ya que están reservados para la novia.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- BREAKER 4 -->
-    <div class="photo-breaker" style="background-image:url('photos/breaker-250.jpg')"></div>
-
-    <!-- ===== 5. GALERÍA ===== -->
-    <section class="clean-section" id="galeria">
-      <div class="clean-inner fade-in-section">
-        <h2 class="section-title">Galería</h2>
-        <div class="fb-line dark"></div>
-        <div class="gallery-bento">
-          <div class="gallery-item bento-wide" data-index="0"><img src="photos/gallery-15.jpg" alt="Juntos mirando el horizonte" loading="lazy"><div class="gallery-overlay"><span>Juntos mirando el horizonte</span></div></div>
-          <div class="gallery-item bento-tall" data-index="1"><img src="photos/gallery-100.jpg" alt="Beso entre jardines" loading="lazy"><div class="gallery-overlay"><span>Beso entre jardines</span></div></div>
-          <div class="gallery-item" data-index="2"><img src="photos/gallery-35.jpg" alt="Poniendo el anillo" loading="lazy"><div class="gallery-overlay"><span>Poniendo el anillo</span></div></div>
-          <div class="gallery-item" data-index="3"><img src="photos/gallery-160.jpg" alt="Sonriendo frente al mar" loading="lazy"><div class="gallery-overlay"><span>Sonriendo frente al mar</span></div></div>
-          <div class="gallery-item bento-tall" data-index="4"><img src="photos/gallery-180.jpg" alt="Paseando juntos" loading="lazy"><div class="gallery-overlay"><span>Paseando juntos</span></div></div>
-          <div class="gallery-item bento-wide" data-index="5"><img src="photos/gallery-240.jpg" alt="Beso al atardecer" loading="lazy"><div class="gallery-overlay"><span>Beso al atardecer</span></div></div>
-          <div class="gallery-item" data-index="6"><img src="photos/gallery-260.jpg" alt="El anillo de compromiso" loading="lazy"><div class="gallery-overlay"><span>El anillo de compromiso</span></div></div>
-          <div class="gallery-item" data-index="7"><img src="photos/gallery-120.jpg" alt="La propuesta" loading="lazy"><div class="gallery-overlay"><span>La propuesta</span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== 6. REGALO ===== -->
-    <section class="fullbleed-section" id="regalo">
-      <div class="fullbleed-bg" style="background-image:url('photos/section-regalo.jpg')"></div>
-      <div class="fullbleed-overlay overlay-dark"></div>
-      <div class="fullbleed-content fade-in-section">
-        <h2 class="fb-title">Sugerencia de regalo</h2>
-        <div class="fb-line"></div>
-        <p class="fb-text">El mejor regalo es tu presencia, pero si deseas tener un detalle con nosotros para esta nueva etapa, les compartimos esta opción.</p>
-        <div class="regalo-tabs">
-          <button class="regalo-tab active" data-currency="cop">
-            <svg class="regalo-tab-flag" viewBox="0 0 24 16" width="22" height="15">
-              <rect width="24" height="8" fill="#FCD116"/>
-              <rect y="8" width="24" height="4" fill="#003893"/>
-              <rect y="12" width="24" height="4" fill="#CE1126"/>
-            </svg>
-            COP
-          </button>
-          <button class="regalo-tab" data-currency="usd">
-            <svg class="regalo-tab-flag" viewBox="0 0 24 16" width="22" height="15">
-              <rect width="24" height="16" fill="#fff"/>
-              <rect y="0" width="24" height="1.23" fill="#B22234"/>
-              <rect y="2.46" width="24" height="1.23" fill="#B22234"/>
-              <rect y="4.92" width="24" height="1.23" fill="#B22234"/>
-              <rect y="7.38" width="24" height="1.23" fill="#B22234"/>
-              <rect y="9.84" width="24" height="1.23" fill="#B22234"/>
-              <rect y="12.30" width="24" height="1.23" fill="#B22234"/>
-              <rect y="14.76" width="24" height="1.24" fill="#B22234"/>
-              <rect width="10" height="8.62" fill="#3C3B6E"/>
-            </svg>
-            USD
-          </button>
-        </div>
-        <div class="regalo-card active" id="regalo-cop">
-          <div class="regalo-card-header">Consignación en COP</div>
-          <div class="regalo-field"><span class="regalo-label">Titular</span><span class="regalo-value">U-32 S.A.S.</span></div>
-          <div class="regalo-field"><span class="regalo-label">Nº de cuenta</span><span class="regalo-value mono">9020137020</span></div>
-          <div class="regalo-field"><span class="regalo-label">NIT</span><span class="regalo-value mono">9020137020</span></div>
-          <div class="regalo-field"><span class="regalo-label">Banco</span><span class="regalo-value">Global66</span></div>
-          <div class="regalo-field"><span class="regalo-label">Tipo</span><span class="regalo-value">Cuenta Electrónica</span></div>
-        </div>
-        <div class="regalo-card" id="regalo-usd">
-          <div class="regalo-card-header">Consignación en USD</div>
-          <div class="regalo-field"><span class="regalo-label">Titular</span><span class="regalo-value">U-32 S.A.S.</span></div>
-          <div class="regalo-field"><span class="regalo-label">Account Number</span><span class="regalo-value mono">8336897868</span></div>
-          <div class="regalo-field"><span class="regalo-label">Routing Number</span><span class="regalo-value mono">026073150</span></div>
-          <div class="regalo-field"><span class="regalo-label">Swift / BIC</span><span class="regalo-value mono">CMFGUS33</span></div>
-          <div class="regalo-field"><span class="regalo-label">Banco</span><span class="regalo-value">Community Federal Savings Bank</span></div>
-          <div class="regalo-field"><span class="regalo-label">Dirección</span><span class="regalo-value" style="font-size:0.78rem">5 Penn Plaza, 14th Floor, New York, NY 10001, US</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BREAKER 5 -->
-    <div class="photo-breaker" style="background-image:url('photos/breaker-116.jpg')"></div>
-
-    <!-- ===== 7. RSVP ===== -->
-    <section class="fullbleed-section" id="rsvp">
-      <div class="fullbleed-bg" style="background-image:url('photos/section-rsvp.jpg')"></div>
-      <div class="fullbleed-overlay overlay-dark"></div>
-      <div class="fullbleed-content fade-in-section">
-        <h2 class="fb-title">Confirma tu asistencia</h2>
-        <div class="fb-line"></div>
-        <p class="fb-text">Tu presencia es el mejor regalo.<br>Confírmanos por WhatsApp.</p>
-        <a class="btn btn-whatsapp" href="https://wa.me/573133272190?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Camila%20%26%20Mateo%20%F0%9F%A4%8D" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Confirmar por WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer footer-dark" id="footer">
-      <div class="footer-inner fade-in-section">
-        <p class="footer-names">Camila & Mateo</p>
-        <p class="footer-date">28 . 11 . 2026</p>
-        <span class="footer-hashtag-badge">#Cami&amp;Mat</span>
-        <div class="footer-divider"><svg viewBox="0 0 120 20" class="divider-svg"><path d="M0,10 Q30,0 60,10 Q90,20 120,10" fill="none" stroke="rgba(177,177,162,0.4)" stroke-width="1.5"/></svg></div>
-        <p class="footer-phrase">Con todo nuestro amor, los esperamos para celebrar juntos.</p>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">&times;</button>
-    <button class="lightbox-prev" id="lightbox-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <div class="lightbox-img-wrap"><img class="lightbox-img" id="lightbox-img" src="" alt=""></div>
-    <button class="lightbox-next" id="lightbox-next" aria-label="Siguiente"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-    <div class="lightbox-counter" id="lightbox-counter"></div>
-  </div>
-
-  <script src="script.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+<script type="text/babel" src="app.jsx"></script>
 </body>
 </html>
