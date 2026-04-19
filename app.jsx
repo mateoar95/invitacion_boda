@@ -44,7 +44,7 @@ const WEDDING = {
   },
   dresscode: {
     title: 'Playa Elegante',
-    subtitle: 'Celebramos bajo el sol y las estrellas del Caribe. Vestimos ligero, con gracia.',
+    subtitle: 'Celebramos bajo el sol y las estrellas del Caribe. Ponte lindo, como siempre.',
     colors: [
       { name: 'Blanco', hex: '#f3efe6' },
       { name: 'Beige', hex: '#d8c9a8' },
@@ -1562,7 +1562,7 @@ function App() {
           <DressCode />
           <Gallery galleryStyle={tweaks.galleryStyle} />
           <Breaker
-            src="photos/section-rsvp.jpg"
+            src="photos/breaker-rsvp-156.jpg"
             topLeft=""
             topRight="TU LUGAR TE ESPERA"
             quote={<>« Voy a darle <span className="accent">la vuelta al mundo</span><br/>para abrazarte por la espalda. »</>}
