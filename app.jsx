@@ -21,7 +21,7 @@ const WEDDING = {
   preboda: {
     day: 'Viernes 27 de noviembre',
     year: '2026',
-    time: 'Por la tarde',
+    time: '5:00 PM',
     venue: 'BK Restobar',
     address: 'Cra 1 # 1 - 104, Edificio Cascadas del Rodadero',
     city: 'Rodadero, Santa Marta, Magdalena',
