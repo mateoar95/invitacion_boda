@@ -1563,6 +1563,7 @@ function App() {
           <Gallery galleryStyle={tweaks.galleryStyle} />
           <Breaker
             src="photos/breaker-rsvp-156.jpg"
+            objectPosition="45% 28%"
             topLeft=""
             topRight="TU LUGAR TE ESPERA"
             quote={<>« Voy a darle <span className="accent">la vuelta al mundo</span><br/>para abrazarte por la espalda. »</>}
